@@ -118,7 +118,7 @@ export class ExecutionManager {
         if (rcpt != null) {
           break
         }
-        if (i > 20) {
+        if (i > 200) {
           throw new Error('timed out waiting for transaction')
         }
         await new Promise(resolve => setTimeout(resolve, 50))
