@@ -97,7 +97,7 @@ class Runner {
 async function main (): Promise<void> {
   const program = new Command()
     .version(erc4337RuntimeVersion)
-    .option('--network <string>', 'network name or url', 'http://localhost:8545')
+    .option('--network <string>', 'network name or url', 'http://localhost:38545')
     .option('--mnemonic <file>', 'mnemonic/private-key file of signer account (to fund account)')
     .option('--bundlerUrl <url>', 'bundler URL', 'http://localhost:3000/rpc')
     .option('--entryPoint <string>', 'address of the supported EntryPoint contract', ENTRY_POINT)
@@ -145,7 +145,7 @@ async function main (): Promise<void> {
       // for hardhat/node, use account[0]
       signer = provider.getSigner()
       const network = await provider.getNetwork()
-      if (network.chainId === 1337 || network.chainId === 31337) {
+      if (network.chainId === 1337 || network.chainId === 11171168 || network.chainId === 31337) {
         deployFactory = true
       }
     } catch (e) {
