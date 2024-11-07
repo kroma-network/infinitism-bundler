@@ -43,7 +43,7 @@ function rlpEncodeRip7560Tx (op: OperationRIP7560, forSignature = true): string 
   input.push(bigNumberishToUnpaddedBuffer(op.paymasterPostOpGasLimit ?? 0))
   input.push(bigNumberishToUnpaddedBuffer(op.nonceKey))
   let rlpEncoded: any = encode(input)
-  rlpEncoded = Buffer.from([4, ...rlpEncoded])
+  rlpEncoded = Buffer.from([5, ...rlpEncoded])
   return hexlify(rlpEncoded)
 }
 
