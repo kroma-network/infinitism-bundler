@@ -1,9 +1,9 @@
 {
-  "chainId": 1337,
+  "chainId": 11171168,
   "gasFactor": "1",
-  "port": "3000",
+  "port": "7560",
   "privateApiPort": "3001",
-  "network": "http://127.0.0.1:8545",
+  "network": "http://127.0.0.1:38545",
   "entryPoint": "0x0000000071727De22E5E9d8BAf0edAc6f37da032",
   "beneficiary": "0xd21934eD8eAf27a67f0A70042Af50A1D6d195E81",
   "minBalance": "1",
@@ -15,5 +15,6 @@
   "autoBundleMempoolSize": 10,
   "rip7560": true,
   "rip7560Mode": "PULL",
-  "gethDevMode": true
+  "gethDevMode": false,
+  "unsafe": true
 }

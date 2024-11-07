@@ -268,6 +268,26 @@ export class BundlerServer {
         }
         result = await this.methodHandlerRip7560.getRIP7560TransactionReceipt(params[0])
         break
+      case 'eth_getTransactionHash':
+        if (!this.config.rip7560) {
+          throw new RpcError(`Method ${method} is not supported`, -32601)
+        }
+        var receipt: any = await this.methodHandlerRip7560.getRIP7560TransactionReceipt(params[0])
+        result = receipt.transactionHash
+        break
+      case 'eth_callRip7560Validation':
+        if (!this.config.rip7560) {
+          throw new RpcError(`Method ${method} is not supported`, -32601)
+        }
+        result = await (this.provider as JsonRpcProvider).send('eth_callRip7560Validation', [params[0]])
+        break
+      case 'eth_estimateGas':
+        if (!this.config.rip7560) {
+          throw new RpcError(`Method ${method} is not supported`, -32601)
+        }
+        result = await (this.provider as JsonRpcProvider).send('eth_estimateRip7560TransactionGas', [params[0]])
+        break
+
       /** EIP-4337 specific RPC API */
       case 'eth_chainId':
         // eslint-disable-next-line no-case-declarations

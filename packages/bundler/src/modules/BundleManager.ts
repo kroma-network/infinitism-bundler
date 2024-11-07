@@ -334,6 +334,8 @@ export class BundleManager implements IBundleManager {
       bundleGas = newBundleGas
       senders.add(entry.userOp.sender)
       bundle.push(entry.userOp)
+      // TODO : Alternative is needed for the failed bundle to be repeatedly retried
+      this.mempoolManager.removeUserOp(entry.userOpHash)
       totalGas = newTotalGas
     }
     return [bundle, storageMap]
