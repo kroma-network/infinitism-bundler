@@ -15,6 +15,6 @@
   "autoBundleMempoolSize": 10,
   "rip7560": true,
   "rip7560Mode": "PULL",
-  "gethDevMode": true,
+  "gethDevMode": false,
   "unsafe": true
 }
