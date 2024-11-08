@@ -59,10 +59,10 @@ export class BundlerServer {
     app.use(cors())
     app.use(bodyParser.json())
 
-    app.get('/', this.intro.bind(this))
-    app.post('/', this.intro.bind(this))
+    // app.get('/', this.intro.bind(this))
+    // app.post('/', this.intro.bind(this))
 
-    app.post('/rpc', handler)
+    app.post('/', handler)
   }
 
   startingPromise: Promise<void>
