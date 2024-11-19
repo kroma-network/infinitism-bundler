@@ -276,6 +276,7 @@ export class BundlerServer {
         }
         var receipt: any = await (this.provider as JsonRpcProvider).send('eth_getTransactionReceipt', [params[0]])
         // var receipt: any = await this.methodHandlerRip7560.getRIP7560TransactionReceipt(params[0])
+
         result = receipt.transactionHash
         break
       case 'eth_callRip7560Validation':
