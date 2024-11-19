@@ -59,10 +59,10 @@ export class BundlerServer {
     app.use(cors())
     app.use(bodyParser.json())
 
-    app.get('/', this.intro.bind(this))
-    app.post('/', this.intro.bind(this))
+    // app.get('/', this.intro.bind(this))
+    // app.post('/', this.intro.bind(this))
 
-    app.post('/rpc', handler)
+    app.post('/', handler)
   }
 
   startingPromise: Promise<void>
@@ -266,13 +266,17 @@ export class BundlerServer {
         if (!this.config.rip7560) {
           throw new RpcError(`Method ${method} is not supported`, -32601)
         }
-        result = await this.methodHandlerRip7560.getRIP7560TransactionReceipt(params[0])
+        // TODO : implement receipt formatter for RIP-7560
+        // result = await this.methodHandlerRip7560.getRIP7560TransactionReceipt(params[0])
+        result = await (this.provider as JsonRpcProvider).send('eth_getTransactionReceipt', [params[0]])
         break
       case 'eth_getTransactionHash':
         if (!this.config.rip7560) {
           throw new RpcError(`Method ${method} is not supported`, -32601)
         }
-        var receipt: any = await this.methodHandlerRip7560.getRIP7560TransactionReceipt(params[0])
+        var receipt: any = await (this.provider as JsonRpcProvider).send('eth_getTransactionReceipt', [params[0]])
+        // var receipt: any = await this.methodHandlerRip7560.getRIP7560TransactionReceipt(params[0])
+
         result = receipt.transactionHash
         break
       case 'eth_callRip7560Validation':
